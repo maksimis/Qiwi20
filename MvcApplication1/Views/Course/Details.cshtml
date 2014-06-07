@@ -1,0 +1,73 @@
+﻿@model MvcApplication1.Models.BookingModel
+
+@{
+    ViewBag.Title = "Подробнее";
+}
+
+<h2>Подробно о концерте</h2>
+
+<fieldset>
+    <legend>BookingModel</legend>
+    
+    <div class="display-label">
+       <h3>Дата концерта</h3> 
+    </div>
+    <div class="display-field">
+        <!--  @Html.DisplayFor(modelItem => Model.ConcertDate)-->
+        @Model.ConcertDate.ToString("dd.MM.yyyy")
+    </div>
+    
+    <div class="display-label">
+        <h3>Исполнитель</h3>
+</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+
+    <div class="display-label">
+        <h3>Цена билета</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+    <br/>
+    <div class="display-label">
+        <!--изображение-->
+    </div>
+    <div class="display-field">
+     <!-- @Html.DisplayFor(model => model.ImageSource) -->  
+        <img src="@Url.Content("~/images/"+ Model.ImageSource)" height="160" onclick="changeSizeImage(this)"  />
+    </div>
+    <div class="display-label">
+        <h3>Откуда</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.From)
+    </div>
+
+    <div class="display-label">
+        <h3>Жанры</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Style)
+    </div>
+
+
+    <div class="display-label">
+        <h3>Программа</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+        <h3>Телефон для связи</h3>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
