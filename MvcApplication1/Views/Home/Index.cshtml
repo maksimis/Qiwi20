@@ -1,42 +1,46 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@section featured {
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>Приветствуем Вас</h1>
-                <h2>Этот сайт поможет вам выучить английский язык.</h2>
-            </hgroup>
-            <p>
-                Чтобы узнать больше о ASP.NET MVC посетите
-                <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-                Просмотрите разделы <mark>видео, инструкции, и примеры</mark>, чтобы получить больше от ASP.NET MVC.
-                Если у Вас есть вопросы о ASP.NET MVC посетите
-                <a href="http://forums.asp.net/1146.aspx/1?MVC" title="ASP.NET MVC Forum">их форумы</a>.
-            </p>
+
+    
+        <div class="page1 slider-padding">
+            <div id="sliderFrame">
+                <div id="slider">
+                    <img src="Images/1.png" />
+                    <img src="Images/2.png" />
+                    <img src="Images/3.png" />
+                </div>
+                <!--Custom navigation buttons on both sides-->
+                <div class="group1-Wrapper">
+                    <a onclick="imageSlider.previous()" class="group1-Prev"></a>
+                    <a onclick="imageSlider.next()" class="group1-Next"></a>
+                </div>
+                <!--nav bar
+                <div style="text-align:center;padding:20px;z-index:20;">
+                    <a onclick="imageSlider.previous()" class="group2-Prev"></a>
+                    <a id='auto' onclick="switchAutoAdvance()"></a>
+                    <a onclick="imageSlider.next()" class="group2-Next"></a>
+                </div>
+                    -->
+            </div>
+
+
+            
+            <script type="text/javascript">
+                //The following script is for the group 2 navigation buttons.
+                function switchAutoAdvance() {
+                    imageSlider.switchAuto();
+                    switchPlayPauseClass();
+                }
+                function switchPlayPauseClass() {
+                    var auto = document.getElementById('auto');
+                    var isAutoPlay = imageSlider.getAuto();
+                    auto.className = isAutoPlay ? "group2-Pause" : "group2-Play";
+                    auto.title = isAutoPlay ? "Pause" : "Play";
+                }
+                switchPlayPauseClass();
+            </script>
         </div>
-    </section>
-}
-<h3>Они предлагают следующее:</h3>
-<ol class="round">
-    <li class="one">
-        <h5>Приступая к работе</h5>
-        ASP.NET MVC дает мощный, на основе шаблонов способ создания динамических веб-сайтов, которая позволяет четкое разделение проблем и что дает вам 
-        полный контроль над разметкой для приятного, гибкой разработки. ASP.NET MVC включает в себя множество функций, которые позволяют быстро, 
-        TDD-благоприятного развития для создания сложных приложений, использующих новейшие веб-стандарты.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245151">Читать больше...</a>
-    </li>
+  
 
-    <li class="two">
-        <h5>Добавить NuGet пакеты и подтолкнуть ваш кодирование</h5>
-        NuGet позволяет легко устанавливать и обновлять бесплатные библиотеки и инструменты.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245153">Читать больше…</a>
-    </li>
 
-    <li class="three">
-        <h5>Найти веб-хостинг</h5>
-        Вы можете легко найти веб-хостинг компания, которая предлагает правильное сочетание возможностей и цены для ваших приложений.
-        <a href="http://go.microsoft.com/fwlink/?LinkId=245157">Читать больше…</a>
-    </li>
-</ol>

@@ -4,12 +4,12 @@
     ViewBag.Title = "Курсы";
 }
 
-<h2>Курсы</h2>
+<h2 class="padd5">Курсы</h2>
 
 <p>
    
 </p>
-<table>
+ <!--<table>
     <tr>
        
         <th>
@@ -19,7 +19,7 @@
             Цена
         </th>
         <th>
-  <!-- Изображение-->
+  Изображение
         </th>
         <th>
             Рейтинг
@@ -35,41 +35,40 @@
             Уровень
         </th>
         <th></th>
-    </tr>
+    </tr>-->
 
 @foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-           
+    
+    <div class="row-fluid padd5">
+        <div class="span3">
             <img src="@Url.Content("~/images/"+ item.ImageSource)" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rating)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.autor)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.level)
-        </td>
-        <td>
-            
-            @Html.ActionLink("Подробнее", "Details", new { id=item.ID })
-          
-        </td>
-    </tr>
+        </div> 
+        <div class="span9">
+            <div class="row-fluid">
+                <div class="span9 bold">@Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="span3">Уровень: @Html.DisplayFor(modelItem => item.level)</div>
+             </div>
+            <div class="row-fluid">
+                Тематика: @Html.DisplayFor(modelItem => item.Theme)
+            </div>
+            <div class="row-fluid">
+                О курсе: @Html.DisplayFor(modelItem => item.Description)
+            </div>
+            <div class="row-fluid">
+                <div class="span3">
+                   Рейтинг: @Html.DisplayFor(modelItem => item.rating)
+
+                </div>
+                <div class="span3">Автор: @Html.DisplayFor(modelItem => item.autor)</div>
+                <div class="span3">Стоимость: @Html.DisplayFor(modelItem => item.Price) руб.</div>
+                <div class="span3 green">@Html.ActionLink("Купить", "Buy", new { id = item.ID })/
+                @Html.ActionLink("Подробнее", "Details", new { id = item.ID })</div>
+            </div>
+         </div> 
+
+    </div>
+    
+    
+   
 }
 
-</table>

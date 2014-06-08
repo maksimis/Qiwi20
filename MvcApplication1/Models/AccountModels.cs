@@ -25,7 +25,10 @@ namespace MvcApplication1.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
-        public int UserAcces { get; set; }
+
+        public string Status { get; set; }
+        public string ImageSource { set; get; }
+        public int UserAccess { get; set; }
     }
 
     public class RegisterExternalLoginModel

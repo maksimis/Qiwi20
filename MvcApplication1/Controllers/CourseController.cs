@@ -9,66 +9,76 @@ namespace MvcApplication1.Controllers
 {
     public class CourseController : Controller
     {
-        //
-        // GET: /Artists/
+        
+        public List<CourseModel> model {get; set;} // = new List<CourseModel>();
 
-        public ActionResult Index()
+        public CourseController()
         {
-            var model = new List<CourseModel>();
-            model.Add(new CourseModel()
+            model = new List<CourseModel>();
+        model.Add(new CourseModel()
             {
                 ID = 1,
                 Name = "Базовый курс английского языка для начинающих",
                 level = "Elementary",
                 Price = 0,
-                ImageSource = "0.jpg",
+                ImageSource = "tourizm.jpeg",
                 Description = "Изучение основных конструкций в английском языке: простое прошедшее, настоящее, будущее время",
                 autor = "Макс",
                 autorID = 1,
-                rating = 5
+                rating = 5,
+                Theme = "Туризм"
             });
             model.Add(new CourseModel()
             {
-                ID = 1,
+                ID = 2,
                 Name = "Продвинутый курс английского языка для начинающих",
                 level = "Elementary",
                 Price = 10,
-                ImageSource = "0.jpg",
+                ImageSource = "bizness.jpeg",
                 Description = "Изучение продвинытых конструкций в английском языке: совершенное прошедшее, настоящее, будущее время",
                 autor = "Макс",
                 autorID = 1,
-                rating = 5
+                rating = 5,
+                Theme = "Бизнес"
             });
             model.Add(new CourseModel()
             {
-                ID = 1,
+                ID = 3,
                 Name = "Базовый курс английского языка для начинающих",
                 level = "Elementary",
                 Price = 0,
-                ImageSource = "0.jpg",
+                ImageSource = "programm.jpeg",
                 Description = "Изучение основных конструкций в английском языке: простое прошедшее, настоящее, будущее время",
                 autor = "Макс",
                 autorID = 1,
-                rating = 5
+                rating = 5,
+                Theme = "Программирование"
             });
-
+        }
+        public ActionResult Index()
+        {
             return View(model);
         }
 
         public ActionResult Details (int id) {
-            var model = new CourseModel()
+            CourseModel r = model.Find(delegate(CourseModel bk)
             {
-                ID = 1,
-                Name = "Базовый курс английского языка для начинающих",
-                level = "Elementary",
-                Price = 0,
-                ImageSource = "0.jpg",
-                Description = "Изучение основных конструкций в английском языке: простое прошедшее, настоящее, будущее время",
-                autor = "Макс",
-                autorID = 1,
-                rating = 5
-            };
-        return View(model);
+                return bk.ID == id;
+            });
+
+           return View(r);
+            
+        }
+
+        public ActionResult Buy(int id)
+        {
+            CourseModel r = model.Find(delegate(CourseModel bk)
+            {
+                return bk.ID == id;
+            });
+
+            return View(r);
+
         }
     }
 }

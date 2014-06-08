@@ -3,7 +3,7 @@
     <head>
         <script language="JavaScript">
             var bigsize = "300"; //Размер большой картинки
-            var smallsize = "160"; //Размер маленькой картинки
+            var smallsize = "70"; //Размер маленькой картинки
             function changeSizeImage(im) {
                 if (im.height == bigsize) im.height = smallsize;
                 else im.height = bigsize;
@@ -11,47 +11,118 @@
         </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title — приложение ASP.NET MVC</title>
+        <title>English Trip — портал для изучения английского языка с преподавателями</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
+		<link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+       <link href="/main.css" rel="stylesheet">
+        <link href="Content/themes/4/js-image-slider.css" rel="stylesheet" type="text/css" />
+        <script src="Content/themes/4/js-image-slider.js" type="text/javascript"></script>
+        <link href="Content/generic.css" rel="stylesheet" type="text/css" />
+        <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
     </head>
     <body>
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Расписание", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                            <li>@Html.ActionLink("О сайте", "About", "Home")</li>
-                            <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Курсы", "Index", "Course")</li>
-                            <li>@Html.ActionLink("Тренировки", "Index", "Training")</li>
-                        </ul>
-                    </nav>
+            <div class="page1">
+                <div class="row-fluid">
+                    <div class="span2"></div>
+                    <div class=" span3 top_logo centered">
+                        <img class="top_logo" src="/Images/logo2.GIF">
+                    </div>
+                    <div class="span5 top_link_bottom">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <section id="login">
+                                    @Html.Partial("_LoginPartial")
+                                </section>
+                            </div>
+                        </div>
+
+                        <div class="row-fluid top_link">
+
+
+
+                            <div class="span2">
+                                @Html.ActionLink("Главная", "Index", "Home")
+                            </div>
+                            <div class="span2">
+                                @Html.ActionLink("Курсы", "Index", "Course")
+                            </div>
+
+                            <div class="span2">
+                                @Html.ActionLink("Преподаватели", "Index", "Teachers")
+                            </div>
+                            @*<div class="span2">
+                                @Html.ActionLink("Словарь", "Index", "Dictionary")
+                            </div>*@
+                            <div class="span3">
+@if (Request.IsAuthenticated) {
+@Html.ActionLink("Задания", "About", "Home", new { name = User.Identity.Name })
+}  
+                            </div>
+                            <div class="span3"></div>
+
+                        </div>
+                    </div>
+                    <div class="span2"></div>
                 </div>
             </div>
+            <!--
+                    <div class="content-wrapper">
+                        <div class="float-left">
+                            <p class="site-title">@Html.ActionLink("Расписание", "Index", "Home")</p>
+                        </div>
+                        <div class="float-right">
+                            <section id="login">
+                                @Html.Partial("_LoginPartial")
+                            </section>
+                            <nav>
+                                <ul id="menu">
+                                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("О сайте", "About", "Home")</li>
+                                    <li>@Html.ActionLink("Контакты", "Contact", "Home")</li>
+                                    <li>@Html.ActionLink("Курсы", "Index", "Course")</li>
+                                    <li>@Html.ActionLink("Тренировки", "Index", "Training")</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+        -->
         </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
+        <div class="row-fluid" id="body">
+            <div class="span2"></div>
+            <div class="span8">
+                @RenderSection("featured", required: false)
+                <section class="page1">
+                    @RenderBody()
+                </section>
+            </div>
+            <div class="span2"></div>
         </div>
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year — Расписание концертов</p>
-                </div>
+
+            @if (Request.IsAuthenticated)
+            {
+               <div class="row-fluid">
+                <div class="span12 centered"><img src="/images/trip.jpg"/></div>
             </div>
-        </footer>
+            }
+            
+            
+
+            <div class="row-fluid">
+                <div class="span2"></div>
+                <div class="page1 span8">
+                    <div class="">
+                        <p>&copy; @DateTime.Now.Year — Курсы английского языка</p>
+                    </div>
+                </div>
+                <div class="span2"></div>
+            </div>
+            
+</footer>
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
